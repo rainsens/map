@@ -19,6 +19,11 @@
             "Rainsens\\Map\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Rainsens\\Map\\Tests": "tests"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
