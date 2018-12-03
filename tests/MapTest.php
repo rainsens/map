@@ -24,18 +24,6 @@ use Rainsens\Map\Exceptions\InvalidArgumentException;
 
 class MapTest extends TestCase
 {
-    public function testGetGeocodeWithInvalidBoolean()
-    {
-        $map = new Map('mock-key');
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid boolean value(true/false): foo');
-
-        $map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'json', 'foo');
-
-        $this->fail('Failed to assert getGeocode throw exception with invalid argument.');
-    }
-
     public function testGetGeocodeWithInvalidFormat()
     {
         $map = new Map('mock-key');
@@ -43,7 +31,7 @@ class MapTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid response format: array');
 
-        $map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'array');
+        $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京', 'array');
 
         $this->fail('Failed to assert getGeocode throw exception with invalid argument.');
     }
@@ -59,7 +47,7 @@ class MapTest extends TestCase
         $this->expectException(HttpException::class);
         $this->expectExceptionMessage('request timeout');
 
-        $map->getGeocode('北京市朝阳区阜通东大街6号', '北京');
+        $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京');
     }
 
     public function testGetHttpClient()
@@ -88,12 +76,12 @@ class MapTest extends TestCase
                 'address'   => '北京市朝阳区阜通东大街6号',
                 'city'      => '北京',
                 'output'    => 'json',
-	            'batch'     => 'false',
+	            'batch'     => 'true',
             ],
         ])->andReturn($response);
         $map = Mockery::mock(Map::class, ['mock-key'])->makePartial();
         $map->allows()->getHttpClient()->andReturn($client);
-        $this->assertSame(['success' => true], $map->getGeocode('北京市朝阳区阜通东大街6号', '北京'));
+        $this->assertSame(['success' => true], $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京'));
 
         //----- Test argument xml ---------------------------------------------------
         $response = new Response(200, [], '<hello>content</hello>');
@@ -104,11 +92,11 @@ class MapTest extends TestCase
                 'address'   => '北京市朝阳区阜通东大街6号',
                 'city'      => '北京',
                 'output'    => 'xml',
-	            'batch'     => 'false',
+	            'batch'     => 'true',
             ],
         ])->andReturn($response);
         $map = Mockery::mock(Map::class, ['mock-key'])->makePartial();
         $map->allows()->getHttpClient()->andReturn($client);
-        $this->assertSame('<hello>content</hello>', $map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'xml'));
+        $this->assertSame('<hello>content</hello>', $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京', 'xml'));
     }
 }

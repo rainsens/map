@@ -37,24 +37,20 @@ class Map
         return new Client($this->guzzleOptions);
     }
 
-    public function getGeocode($address, $city, $format = 'json', $batch = 'false')
+    public function getGeocode(array $address, $city, $format = 'json')
     {
         if (!in_array(strtolower($format), ['xml', 'json'])) {
             throw new InvalidArgumentException('Invalid response format: '.$format);
-        }
-
-        if (!in_array(strtolower($batch), ['true', 'false'])) {
-            throw new InvalidArgumentException('Invalid boolean value(true/false): '.$batch);
         }
         
         $url = 'https://restapi.amap.com/v3/geocode/geo';
 
         $query = array_filter([
             'key'       => $this->key,
-            'address'   => $address,
+            'address'   => implode('|', $address),
             'city'      => $city,
             'output'    => strtolower($format),
-            'batch'     => $batch,
+            'batch'     => 'true',
         ]);
 
         try {
