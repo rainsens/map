@@ -31,7 +31,7 @@ class MapTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid response format: array');
 
-        $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京', 'array');
+        $map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'array');
 
         $this->fail('Failed to assert getGeocode throw exception with invalid argument.');
     }
@@ -47,7 +47,7 @@ class MapTest extends TestCase
         $this->expectException(HttpException::class);
         $this->expectExceptionMessage('request timeout');
 
-        $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京');
+        $map->getGeocode('北京市朝阳区阜通东大街6号', '北京');
     }
 
     public function testGetHttpClient()
@@ -81,7 +81,7 @@ class MapTest extends TestCase
         ])->andReturn($response);
         $map = Mockery::mock(Map::class, ['mock-key'])->makePartial();
         $map->allows()->getHttpClient()->andReturn($client);
-        $this->assertSame(['success' => true], $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京'));
+        $this->assertSame(['success' => true], $map->getGeocode('北京市朝阳区阜通东大街6号', '北京'));
 
         //----- Test argument xml ---------------------------------------------------
         $response = new Response(200, [], '<hello>content</hello>');
@@ -97,6 +97,6 @@ class MapTest extends TestCase
         ])->andReturn($response);
         $map = Mockery::mock(Map::class, ['mock-key'])->makePartial();
         $map->allows()->getHttpClient()->andReturn($client);
-        $this->assertSame('<hello>content</hello>', $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京', 'xml'));
+        $this->assertSame('<hello>content</hello>', $map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'xml'));
     }
 }

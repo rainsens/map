@@ -21,14 +21,19 @@ $map = new Map($key);
 
 ## Getting one geocoding once
 ```php
-$map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京');
-$map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京', 'json');
-$map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京', 'xml');
+$map->getGeocode('北京市朝阳区阜通东大街6号', '北京');
+$map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'json');
+$map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'xml');
 ```
 
 ## Getting multi geocoding once
 ```php
-$map->getGeocode(['北京市朝阳区阜通东大街6号','北京市通州区运河东大街6号'], '北京');
+$cities = [
+    '北京市朝阳区阜通东大街6号',
+    '北京市通州区运河东大街6号',
+];
+
+$map->getGeocode($cities, '北京');
 ```
 
 ## Example

@@ -37,8 +37,10 @@ class Map
         return new Client($this->guzzleOptions);
     }
 
-    public function getGeocode(array $address, $city, $format = 'json')
+    public function getGeocode($address, $city, $format = 'json')
     {
+    	if (!is_array($address)) $address = [$address];
+    	
         if (!in_array(strtolower($format), ['xml', 'json'])) {
             throw new InvalidArgumentException('Invalid response format: '.$format);
         }
