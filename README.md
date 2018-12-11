@@ -118,13 +118,13 @@ You can get instance by two ways:
 ```php
 public func edit(Map $map)
 {
-    $response = $map->getGeocode(['北京市朝阳区阜通东大街6号'], '北京');
+    $response = $map->getGeocode('北京市朝阳区阜通东大街6号', '北京');
 }
 ```
 ```php
 public function edit()
 {
-    $response = app('map')->getGeocode(['北京市朝阳区阜通东大街6号'], '北京');
+    $response = app('map')->getGeocode('北京市朝阳区阜通东大街6号', '北京');
 }
 ```
 
