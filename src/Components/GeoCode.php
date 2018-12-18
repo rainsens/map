@@ -12,7 +12,7 @@ class GeoCode extends BaseMap implements GeoCodeInterface
 	
 	public function __construct(string $key)
 	{
-		$this->url = $key;
+		$this->key = $key;
 	}
 	
 	public function getGeoCode(string $address, string $city, string $format = 'json')

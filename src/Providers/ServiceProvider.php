@@ -12,7 +12,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     	$this->app->singleton(Map::class, function () {
     		return new Map(config('services.map.key'));
 	    });
-    	$this->app->alias(Map::class, 'map');
     }
     
     public function provides()

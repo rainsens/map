@@ -14,8 +14,13 @@ class Map
 		$this->key = $key;
 	}
 	
-	public function GeoCode()
+	public function geoCode()
     {
     	return new GeoCode($this->key);
+	}
+	
+	public function geoFence()
+	{
+	
 	}
 }
