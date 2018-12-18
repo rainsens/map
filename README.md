@@ -1,6 +1,6 @@
 <h1 align="center"> Map </h1>
 
-<p align="center"> A map sdk only for getting geocoding at the moment.</p>
+<p align="center"> A map sdk only for getting Geo Code at the moment.</p>
 
 
 ## Installing

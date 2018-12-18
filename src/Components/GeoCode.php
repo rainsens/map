@@ -15,7 +15,7 @@ class GeoCode extends BaseMap implements GeoCodeInterface
 		$this->key = $key;
 	}
 	
-	public function getGeoCode(string $address, string $city, string $format = 'json')
+	public function get(string $address, string $city, string $format = 'json')
 	{
 		if (!is_array($address)) $address = [$address];
 		
