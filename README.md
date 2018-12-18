@@ -21,9 +21,9 @@ $map = new Map($key);
 
 ## Getting one geocoding once
 ```php
-$map->getGeocode('北京市朝阳区阜通东大街6号', '北京');
-$map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'json');
-$map->getGeocode('北京市朝阳区阜通东大街6号', '北京', 'xml');
+$map->GeoCode->get('北京市朝阳区阜通东大街6号', '北京');
+$map->GeoCode->get('北京市朝阳区阜通东大街6号', '北京', 'json');
+$map->GeoCode->get('北京市朝阳区阜通东大街6号', '北京', 'xml');
 ```
 
 ## Getting multi geocoding once
@@ -33,7 +33,7 @@ $cities = [
     '北京市通州区运河东大街6号',
 ];
 
-$map->getGeocode($cities, '北京');
+$map->GeoCode->get($cities, '北京');
 ```
 
 ## Example
@@ -114,19 +114,11 @@ Then configure the MAP_API_KEY in .env
 ```php
 MAP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-You can get instance by two ways:
+
 ```php
-public func edit(Map $map)
-{
-    $response = $map->getGeocode('北京市朝阳区阜通东大街6号', '北京');
-}
+Map::GeoCode->get('北京市朝阳区阜通东大街6号', '北京');
 ```
-```php
-public function edit()
-{
-    $response = app('map')->getGeocode('北京市朝阳区阜通东大街6号', '北京');
-}
-```
+
 
 ## Reference
 [Amap](https://lbs.amap.com/api/webservice/guide/api/georegeo)
