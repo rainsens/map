@@ -7,6 +7,6 @@ class Map extends Facade
 {
 	protected static function getFacadeAccessor()
 	{
-		return \Rainsens\Map\Map::class;
+		return 'map';
 	}
 }

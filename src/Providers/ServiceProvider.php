@@ -9,7 +9,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function register()
     {
-    	$this->app->singleton(Map::class, function () {
+    	$this->app->singleton('map', function () {
     		return new Map(config('services.map.key'));
 	    });
     }
