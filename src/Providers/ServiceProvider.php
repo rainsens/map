@@ -1,5 +1,7 @@
 <?php
-namespace Rainsens\Map;
+namespace Rainsens\Map\Providers;
+
+use Rainsens\Map\Map;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

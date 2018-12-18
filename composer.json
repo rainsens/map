@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rainsens\\Map\\ServiceProvider"
+                "Rainsens\\Map\\Providers\\ServiceProvider"
             ],
             "aliases": {
                 "Map": "Rainsens\\Map\\Facades\\Map"
