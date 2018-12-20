@@ -128,7 +128,8 @@ MAP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ```php
 Map::geoCode->get('北京市朝阳区阜通东大街6号', '北京');
-
+```
+```php
 Map::geoFence()->create([...]);
 Map::geoFence()->search([...]);
 Map::geoFence()->update([...]);
@@ -136,7 +137,7 @@ Map::geoFence()->enable(string $gid, bool $status = true);
 Map::geoFence()->delete(string $gid);
 Map::geoFence()->monitor([...]);
 ```
-
+About arguments above please refer [AMap](https://lbs.amap.com/api/webservice/guide/api/geofence_service).
 
 ## Reference
 [Amap](https://lbs.amap.com/api/webservice/guide/api/georegeo)
