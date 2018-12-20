@@ -2,6 +2,7 @@
 namespace Rainsens\Map;
 
 use Rainsens\Map\Components\GeoCode;
+use Rainsens\Map\Components\GeoFence;
 
 class Map
 {
@@ -21,6 +22,6 @@ class Map
 	
 	public function geoFence()
 	{
-	
+		return new GeoFence($this->key);
 	}
 }

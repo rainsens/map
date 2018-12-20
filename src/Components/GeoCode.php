@@ -1,7 +1,7 @@
 <?php
 namespace Rainsens\Map\Components;
 
-use Rainsens\Map\Exceptions\Exception;
+use Rainsens\Map\BaseMap;
 use Rainsens\Map\Exceptions\HttpException;
 use Rainsens\Map\Contracts\GeoCodeInterface;
 use Rainsens\Map\Exceptions\InvalidArgumentException;
@@ -34,7 +34,7 @@ class GeoCode extends BaseMap implements GeoCodeInterface
 		try {
 			$response = $this->getHttpClient()->get($this->url, ['query' => $query])->getBody()->getContents();
 			return $format === 'json' ? json_decode($response, true) : $response;
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			throw new HttpException($e->getMessage(), $e->getCode(), $e);
 		}
 	}

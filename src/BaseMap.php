@@ -1,5 +1,5 @@
 <?php
-namespace Rainsens\Map\Components;
+namespace Rainsens\Map;
 
 use GuzzleHttp\Client;
 
