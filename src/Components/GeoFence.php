@@ -8,7 +8,41 @@ use Rainsens\Map\Exceptions\InvalidArgumentException;
 
 class GeoFence extends BaseMap implements GeoFenceInterface
 {
-	protected $url = 'https://restapi.amap.com/v4/geofence/meta';
+	/**
+	 * POST
+	 * @var string
+	 */
+	private $createUrl = 'https://restapi.amap.com/v4/geofence/meta';
+	
+	/**
+	 * GET
+	 * @var string
+	 */
+	private $searchUrl = 'https://restapi.amap.com/v4/geofence/meta';
+	
+	/**
+	 * PATCH
+	 * @var string
+	 */
+	private $updateUrl = 'https://restapi.amap.com/v4/geofence/meta';
+	
+	/**
+	 * PATCH
+	 * @var string
+	 */
+	private $enableUrl = 'https://restapi.amap.com/v4/geofence/meta';
+	
+	/**
+	 * DELETE
+	 * @var string
+	 */
+	private $deleteUrl = 'https://restapi.amap.com/v4/geofence/meta';
+	
+	/**
+	 * GET
+	 * @var string
+	 */
+	private $monitorUrl = 'https://restapi.amap.com/v4/geofence/status';
 	
 	public function __construct(string $key)
 	{
@@ -27,7 +61,7 @@ class GeoFence extends BaseMap implements GeoFenceInterface
 		
 		try {
 			$response = $this->getHttpClient()
-				->post($this->url, ['query' => ['key' => $this->key], 'json' => $params])
+				->post($this->createUrl, ['query' => ['key' => $this->key], 'json' => $params])
 				->getBody()->getContents();
 			$result = json_decode($response, true);
 			return [
