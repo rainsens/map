@@ -103,13 +103,12 @@ $map->GeoCode->get($cities, '北京');
 ## About Geo-Fencing
 About arguments please refer [AMap](https://lbs.amap.com/api/webservice/guide/api/geofence_service).
 ```php
-$params = [];
-$map->geoFence()->create($params);
-$map->geoFence()->search($params);
-$map->geoFence()->update($params);
-$map->geoFence()->enable($gid, $status);
-$map->geoFence()->delete();
-$map->geoFence()->monitor();
+$map->geoFence()->create([...]);
+$map->geoFence()->search([...]);
+$map->geoFence()->update([...]);
+$map->geoFence()->enable(string $gid, bool $status = true);
+$map->geoFence()->delete(string $gid);
+$map->geoFence()->monitor([...]);
 ```
 
 ## Using in Laravel
@@ -129,6 +128,13 @@ MAP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ```php
 Map::geoCode->get('北京市朝阳区阜通东大街6号', '北京');
+
+Map::geoFence()->create([...]);
+Map::geoFence()->search([...]);
+Map::geoFence()->update([...]);
+Map::geoFence()->enable(string $gid, bool $status = true);
+Map::geoFence()->delete(string $gid);
+Map::geoFence()->monitor([...]);
 ```
 
 
