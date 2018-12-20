@@ -1,6 +1,6 @@
 <h1 align="center"> Map </h1>
 
-<p align="center"> A map sdk only for getting Geo Code at the moment.</p>
+<p align="center"> A map sdk for getting Geo Code and Geo-Fencing.</p>
 
 
 ## Installing
@@ -100,6 +100,18 @@ $map->GeoCode->get($cities, '北京');
 </response>
 ```
 
+## About Geo-Fencing
+About arguments please refer [AMap](https://lbs.amap.com/api/webservice/guide/api/geofence_service).
+```php
+$params = [];
+$map->geoFence()->create($params);
+$map->geoFence()->search($params);
+$map->geoFence()->update($params);
+$map->geoFence()->enable($gid, $status);
+$map->geoFence()->delete();
+$map->geoFence()->monitor();
+```
+
 ## Using in Laravel
 Install with the same way and put the API Key in `config/services.php`
 ```php
@@ -116,7 +128,7 @@ MAP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ```php
-Map::GeoCode->get('北京市朝阳区阜通东大街6号', '北京');
+Map::geoCode->get('北京市朝阳区阜通东大街6号', '北京');
 ```
 
 

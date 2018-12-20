@@ -8,13 +8,26 @@ use Rainsens\Map\Exceptions\InvalidArgumentException;
 
 class GeoCode extends BaseMap implements GeoCodeInterface
 {
+	/**
+	 * @var string
+	 */
 	protected $url = 'https://restapi.amap.com/v3/geocode/geo';
 	
+	/**
+	 * GeoCode constructor.
+	 * @param string $key
+	 */
 	public function __construct(string $key)
 	{
 		$this->key = $key;
 	}
 	
+	/**
+	 * @param string $address
+	 * @param string $city
+	 * @param string $format
+	 * @return mixed|string
+	 */
 	public function get(string $address, string $city, string $format = 'json')
 	{
 		if (!is_array($address)) $address = [$address];
