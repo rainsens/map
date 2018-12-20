@@ -8,9 +8,11 @@ interface GeoFenceInterface
 	 *
 	 * [
 	 *      name            => 'A Name',
+	 *
 	 *      center          => '115.672126,38.817129',
 	 *      radius          => '1000',
 	 *      points          => '',
+	 *
 	 *      enable          => '',
 	 *      valid_time      => '2020-12-31'
 	 *      repeat          => '',

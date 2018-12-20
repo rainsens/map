@@ -4,6 +4,7 @@ namespace Rainsens\Map\Components;
 use Rainsens\Map\BaseMap;
 use Rainsens\Map\Contracts\GeoFenceInterface;
 use Rainsens\Map\Exceptions\HttpException;
+use Rainsens\Map\Exceptions\InvalidArgumentException;
 
 class GeoFence extends BaseMap implements GeoFenceInterface
 {
@@ -16,6 +17,14 @@ class GeoFence extends BaseMap implements GeoFenceInterface
 	
 	public function create(array $params): array
 	{
+		if (empty($params['name'])) {
+			throw new InvalidArgumentException('Invalid argument name.');
+		}
+		
+		if (empty($params['center']) && empty($params['radius']) && empty($params['points'])) {
+			throw new InvalidArgumentException('Either center or points have to choose.');
+		}
+		
 		try {
 			$response = $this->getHttpClient()
 				->post($this->url, ['query' => ['key' => $this->key], 'json' => $params])
