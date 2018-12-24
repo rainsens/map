@@ -129,7 +129,7 @@ class GeoFence extends BaseMap implements GeoFenceInterface
 				->getBody()->getContents();
 			$result = json_decode($response, true);
 			return [
-				'status' => (int)$result['data']['status'] === 0 ? 'success' : 'failed',
+				'status' => isset($result['data']['status']) && (int)$result['data']['status'] === 0 ? 'success' : 'failed',
 				'result' => $result,
 			];
 		} catch (\Exception $exception) {
@@ -155,7 +155,7 @@ class GeoFence extends BaseMap implements GeoFenceInterface
 				->getBody()->getContents();
 			$result = json_decode($response, true);
 			return [
-				'status' => (int)$result['data']['status'] === 0 ? 'success' : 'failed',
+				'status' => isset($result['data']['status']) && (int)$result['data']['status'] === 0 ? 'success' : 'failed',
 				'result' => $result
 			];
 		} catch (\Exception $exception) {
@@ -179,7 +179,7 @@ class GeoFence extends BaseMap implements GeoFenceInterface
 			$response = $this->getHttpClient()->delete($this->deleteUrl, ['query' => $query])->getBody()->getContents();
 			$result = json_decode($response, true);
 			return [
-				'status' => (int)$result['data']['status'] === 0 ? 'success' : 'failed',
+				'status' => isset($result['data']['status']) && (int)$result['data']['status'] === 0 ? 'success' : 'failed',
 				'result' => $result,
 			];
 		} catch (\Exception $exception) {
@@ -204,7 +204,7 @@ class GeoFence extends BaseMap implements GeoFenceInterface
 			$response = $this->getHttpClient()->get($this->monitorUrl, ['query' => $params])->getBody()->getContents();
 			$result = json_decode($response, true);
 			return [
-				'status' => (int)$result['data']['status'] === 0 ? 'success' : 'failed',
+				'status' => isset($result['data']['status']) && (int)$result['data']['status'] === 0 ? 'success' : 'failed',
 				'result' => $result,
 			];
 		} catch (\Exception $exception) {
